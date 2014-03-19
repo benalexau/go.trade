@@ -323,7 +323,9 @@ func (r *RequestHistoricalData) write(b *bytes.Buffer) (err error) {
 	if err = writeString(b, string(r.WhatToShow)); err != nil {
 		return
 	}
-	return writeInt(b, 1) // TODO: Using 2 doesn't appear to do anything different?
+	// for formatDate==2, requesting daily bars returns the date in YYYYMMDD format
+	// for more frequent bar sizes, IB returns according to the spec (unix time in seconds)
+	return writeInt(b, 2)
 }
 
 // TODO: Add equivalent of EClientSocket.reqRealTimeBars()

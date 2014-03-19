@@ -1,10 +1,12 @@
 package trade
 
+import "time"
+
 type HistDataBarSize string
 type HistDataToShow string
 
 const (
-	HistBarSize1Sec  HistDataBarSize = "1 sec"
+	HistBarSize1Sec  HistDataBarSize = "1 secs"
 	HistBarSize5Sec                  = "5 secs"
 	HistBarSize15Sec                 = "15 secs"
 	HistBarSize30Sec                 = "30 secs"
@@ -26,7 +28,7 @@ const (
 )
 
 type HistoricalDataItem struct {
-	Date     string
+	Date     time.Time
 	Open     float64
 	High     float64
 	Low      float64
